@@ -1,5 +1,9 @@
 # This is a Book Record Management API build with node js & express js
 
+# Documentation
+
+https://documenter.getpostman.com/view/23950566/2s847LLAX1
+
 # Routes and EndPoints
 
 ✅ => DONE
@@ -12,8 +16,8 @@
 # 1.1) /users/{id}
 
     GET: Get a user by id ✅
-    PUT: Update a user by id
-    DELETE: Delete a user by id (check if he/she still has an issued book) (is there any fine to be paid)
+    PUT: Update a user by id ✅
+    DELETE: Delete a user by id ✅ (check if he/she still has an issued book) (is there any fine to be paid)
 
 # 1.2) /users/subscription-details/{id}
 
