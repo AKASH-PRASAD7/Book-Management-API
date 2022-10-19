@@ -1,0 +1,47 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "name": "Harry Potter and the Chamber of Secrets",
+      "author": "J. K. Rowling",
+      "genre": "Fantasy",
+      "price": "69.99",
+      "publisher": "Bloomsbury",
+      "publication-date": "2 July 1998 ",
+      "pages": "251"
+    },
+
+    {
+      "id": "2",
+      "name": "Harry Potter and the Goblet of Fire",
+      "author": "J. K. Rowling",
+      "genre": "Fantasy",
+      "price": "69.99",
+      "publisher": "Bloomsbury",
+      "Publication-date": "8 July 2000",
+      "pages": "636"
+    },
+
+    {
+      "id": "3",
+      "name": "Harry Potter and the Half-Blood Prince",
+      "author": "J. K. Rowling",
+      "genre": "Fantasy",
+      "price": "69.99",
+      "publisher": "Bloomsbury",
+      "Publication-date": "16 July 2005",
+      "pages": "607"
+    },
+
+    {
+      "id": "4",
+      "name": "Harry Potter and the Deathly Hallows",
+      "author": "J. K. Rowling",
+      "genre": "Fantasy",
+      "price": "69.99",
+      "publisher": "Bloomsbury",
+      "Publication-date": "21 July 2007",
+      "pages": "607"
+    }
+  ]
+}

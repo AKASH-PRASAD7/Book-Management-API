@@ -1,19 +1,21 @@
-# This is a Book Record Management API build with node js & express
+# This is a Book Record Management API build with node js & express js
 
 # Routes and EndPoints
 
+✅ => DONE
+
 # 1) /users
 
-    POST: Create a new user
-    GET: Get all list of users
+    POST: Create a new user    ✅
+    GET: Get all list of users ✅
 
-# /users/{id}
+# 1.1) /users/{id}
 
-    GET: Get a user by id
+    GET: Get a user by id ✅
     PUT: Update a user by id
     DELETE: Delete a user by id (check if he/she still has an issued book) (is there any fine to be paid)
 
-# /users/subscription-details/{id}
+# 1.2) /users/subscription-details/{id}
 
     GET: Get user subscription details
 
@@ -21,21 +23,21 @@
 2.  Valid till
 3.  Fine if any
 
-# /books
+# 2) /books
 
     GET: Get all books
     POST: Create/Add a new book
 
-# /books/{id}
+# 2.1) /books/{id}
 
     GET: Get a book by id
     PUT: Update a book by id
 
-# /books/issued/by-user
+# 2.2) /books/issued/by-user
 
     GET: Get all issued books
 
-# /books/issued/withFine
+# 2.3) /books/issued/withFine
 
 GET: Get all issued books with fine
 
@@ -53,7 +55,7 @@ then it will be valid till date will be 01/06/22
 
 # Fines
 
-If he has an issued book he did not return within
+If he/She has an issued book he did not return within
 return date, then he gets a fine of $69
 
-If he has an issued book and he misses the date of return, and his subscription also expires, then he will get a fine of $169
+If he/she has an issued book and he misses the date of return, and his subscription also expires, then he will get a fine of $169
