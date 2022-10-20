@@ -29,17 +29,17 @@ https://documenter.getpostman.com/view/23950566/2s847LLAX1
 
 # 2) /books
 
-    GET: Get all books
-    POST: Create/Add a new book
+    GET: Get all books ✅
+    POST: Create/Add a new book ✅
 
 # 2.1) /books/{id}
 
-    GET: Get a book by id
-    PUT: Update a book by id
+    GET: Get a book by id ✅
+    PUT: Update a book by id ✅
 
 # 2.2) /books/issued/by-user
 
-    GET: Get all issued books
+    GET: Get all issued books ✅
 
 # 2.3) /books/issued/withFine
 
