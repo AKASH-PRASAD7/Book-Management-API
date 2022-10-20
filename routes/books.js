@@ -153,4 +153,65 @@ booksRouter.put("/:id", (req, res) => {
   });
 });
 
+/**
+ * Route: /books/issued/withFine
+ * Method: GET
+ * Description: Creating new book
+ * Acess: Public
+ * Paramenters: none
+ * Data: none
+ */
+
+booksRouter.get("/issued/withFine", (req, res) => {
+  // Returns date in Days from 1 Jan 1970
+  const dateInDays = (data = "") => {
+    let date = 0;
+    if (data === "") {
+      date = new Date();
+    } else {
+      date = new Date(data);
+    }
+
+    date = Math.floor(date / (1000 * 60 * 60 * 24));
+    return date;
+  };
+
+  //gives current days
+  let cuurentdate = dateInDays();
+
+  const user = users.filter((each) => {
+    returnDate = dateInDays(each.return_date);
+
+    if (cuurentdate > returnDate) {
+      return each;
+    }
+  });
+
+  let book = {};
+  user.map((user1) => {
+    books.map((each) => {
+      if (each.id === user1.issued_book) {
+        let fine = 69;
+        book = { ...each, fine };
+      }
+    });
+  });
+
+  // const book = books.find((each) => {
+  //   if (user.issued_book === each.id) return { ...each };
+  // });
+
+  if (!book) {
+    return res.status(400).json({
+      success: false,
+      message: "No books with fine",
+    });
+  }
+
+  return res.status(200).json({
+    success: true,
+    data: book,
+  });
+});
+
 module.exports = booksRouter;

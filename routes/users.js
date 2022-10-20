@@ -131,11 +131,77 @@ userRouter.delete("/:id", (req, res) => {
     data: users,
   });
 });
+/**
+ * Route: /users/subscription-details/{id}
+ * Method: GET
+ * Description: Getting users subscription details with fine
+ * Acess: Public
+ * Paramenters: id
+ */
 
-// For all non existing Routes
-userRouter.get("*", (req, res) => {
-  res.status(404).send({
-    msg: "Route does not exist",
+userRouter.get("/sub-details/:id", (req, res) => {
+  const { id } = req.params;
+  const user = users.find((each) => each.id === id);
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User does not exist",
+    });
+  } else if (!user.issued_book) {
+    return res.status(400).json({
+      success: false,
+      message: "User did not issued any book",
+    });
+  }
+  // Returns date in Days from 1 Jan 1970
+  const dateInDays = (data = "") => {
+    let date;
+    if (data === "") {
+      date = new Date();
+    } else {
+      date = new Date(data);
+    }
+
+    date = Math.floor(date / (1000 * 60 * 60 * 24));
+    return date;
+  };
+
+  //gives current days
+  let cuurentdate = dateInDays();
+
+  // Return sub days left
+  const subDays = (user1) => {
+    let days;
+    if (user1.sub_type === "basic") {
+      days = dateInDays(user1.sub_date) + 30;
+      return cuurentdate >= days ? 0 : days - cuurentdate;
+    } else if (user1.sub_type === "standard") {
+      days = dateInDays(user1.sub_date) + 90;
+      return cuurentdate >= days ? 0 : days - cuurentdate;
+    } else if (user1.sub_type === "premium") {
+      days = dateInDays(user1.sub_date) + 365;
+      return cuurentdate >= days ? 0 : days - cuurentdate;
+    }
+  };
+
+  let subDaysleft = subDays(user);
+  let returnDate = dateInDays(user.return_date);
+  let subExpired = subDaysleft > 0 ? false : true;
+
+  let fine = cuurentdate > returnDate ? 69 : 0;
+  let extrafine = subDaysleft > 0 ? 0 : 169;
+  fine += extrafine;
+
+  const data = {
+    ...user,
+    subDaysleft,
+    fine,
+    subExpired,
+  };
+
+  return res.status(200).json({
+    success: true,
+    data: data,
   });
 });
 

@@ -6,6 +6,8 @@ https://documenter.getpostman.com/view/23950566/2s847LLAX1
 
 # Routes and EndPoints
 
+# NOTE: **_ Date Is In mm/dd/yyyy Format _**
+
 ✅ => DONE
 
 # 1) /users
@@ -21,11 +23,11 @@ https://documenter.getpostman.com/view/23950566/2s847LLAX1
 
 # 1.2) /users/subscription-details/{id}
 
-    GET: Get user subscription details
+    GET: Get user subscription details ✅
 
-1.  Date of subscription
-2.  Valid till
-3.  Fine if any
+1.  Date of subscription ✅
+2.  Valid till ✅
+3.  Fine if any ✅
 
 # 2) /books
 
@@ -43,7 +45,7 @@ https://documenter.getpostman.com/view/23950566/2s847LLAX1
 
 # 2.3) /books/issued/withFine
 
-GET: Get all issued books with fine
+GET: Get all issued books with fine ✅
 
 # Subscription Types
 
