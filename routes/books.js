@@ -187,21 +187,20 @@ booksRouter.get("/issued/withFine", (req, res) => {
     }
   });
 
-  let book = {};
+  let book1 = {};
   user.map((user1) => {
     books.map((each) => {
-      if (each.id === user1.issued_book) {
-        let fine = 69;
-        book = { ...each, fine };
+      if (user1.issued_book === each.id) {
+        book1 = { ...each };
+        console.log(book1);
       }
     });
   });
+  console.log("safsdfjsdhhj");
 
-  // const book = books.find((each) => {
-  //   if (user.issued_book === each.id) return { ...each };
-  // });
+  console.log(book1);
 
-  if (!book) {
+  if (!book1) {
     return res.status(400).json({
       success: false,
       message: "No books with fine",
@@ -210,7 +209,7 @@ booksRouter.get("/issued/withFine", (req, res) => {
 
   return res.status(200).json({
     success: true,
-    data: book,
+    data: book1,
   });
 });
 
