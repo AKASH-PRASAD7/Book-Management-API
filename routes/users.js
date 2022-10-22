@@ -3,6 +3,14 @@ const userRouter = express.Router();
 
 const { users } = require("../Data/Users.json"); //data import
 
+//controllers
+const {
+  getAllUsers,
+  getUserById,
+  deleteUser,
+  updateUser,
+} = require("../Controllers/User-Controller");
+
 /**
  * Route: Users
  * Method: GET
@@ -10,12 +18,7 @@ const { users } = require("../Data/Users.json"); //data import
  * Acess: Public
  * Paramenters: none
  */
-userRouter.get("/", (req, res) => {
-  res.status(200).json({
-    sucess: true,
-    data: users,
-  });
-});
+userRouter.get("/", getAllUsers);
 
 /**
  * Route: User/:id
@@ -25,20 +28,7 @@ userRouter.get("/", (req, res) => {
  * Paramenters: id
  */
 
-userRouter.get("/:id", (req, res) => {
-  const { id } = req.params;
-  const user = users.find((each) => each.id === id);
-  if (!user) {
-    return res.status(404).json({
-      sucess: false,
-      message: "User does not exist",
-    });
-  }
-  return res.status(200).json({
-    sucess: true,
-    data: user,
-  });
-});
+userRouter.get("/:id", getUserById);
 
 /**
  * Route: Users
@@ -80,30 +70,7 @@ userRouter.post("/", (req, res) => {
  * Paramenters: id
  */
 
-userRouter.put("/:id", (req, res) => {
-  const { id } = req.params;
-  const { data } = req.body;
-  const user = users.find((each) => each.id === id);
-  if (!user) {
-    return res.status(404).json({
-      success: false,
-      message: "User does not exist",
-    });
-  }
-  const updateuser = users.map((each) => {
-    if (each.id === id) {
-      return {
-        ...each,
-        ...data,
-      };
-    }
-    return each;
-  });
-  res.status(200).json({
-    sucess: true,
-    data: updateuser,
-  });
-});
+userRouter.put("/:id", updateUser);
 
 /**
  * Route: User/:id
@@ -112,25 +79,7 @@ userRouter.put("/:id", (req, res) => {
  * Acess: Public
  * Paramenters: id
  */
-userRouter.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  const user = users.find((each) => each.id === id);
-  if (!user) {
-    return res.status(404).json({
-      sucess: false,
-      message: "User does not exist",
-    });
-  }
-
-  const index = users.indexOf(user);
-  users.splice(index, 1);
-
-  return res.status(200).json({
-    sucess: true,
-    message: "User deleted",
-    data: users,
-  });
-});
+userRouter.delete("/:id", deleteUser);
 /**
  * Route: /users/subscription-details/{id}
  * Method: GET
