@@ -70,7 +70,7 @@ exports.addNewBook = async (req, res) => {
   if (allbooks.length === 0) {
     return res.status(404).json({
       success: false,
-      message: "No Books been Issued",
+      message: "No Books found",
     });
   }
 
